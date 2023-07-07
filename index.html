@@ -59,7 +59,18 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  window.addEventListener('keydown', function(e) {
+    const audio = document.querySelector(`audio[data-key='${e.keyCode}']`);
+    
+    //Stops the function from running when a key with no associated audio file is pressed.
+    if(!audio) {
+      return; 
+    }
 
+    audio.currentTime = 0; //Rewind sound to start on multiple press on same key
+    console.log(audio);
+    audio.play();
+  })
 </script>
 
 
